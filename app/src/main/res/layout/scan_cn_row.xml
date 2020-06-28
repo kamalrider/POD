@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/bulk"-->
+<!--        android:background="@color/colorPrimaryLight"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:visibility="visible">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/txtbulk"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="1dp"-->
+<!--            android:text="#BULK"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:textSize="16sp" />-->
+
+<!--        &lt;!&ndash;<ImageView&ndash;&gt;-->
+<!--        &lt;!&ndash;android:id="@+id/close_btn"&ndash;&gt;-->
+<!--        &lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;app:srcCompat="@drawable/close_circle"&ndash;&gt;-->
+<!--        &lt;!&ndash;android:layout_alignParentRight="true"/>&ndash;&gt;-->
+
+
+<!--        &lt;!&ndash;<TextView&ndash;&gt;-->
+<!--        &lt;!&ndash;android:id="@+id/bulk_counter"&ndash;&gt;-->
+<!--        &lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;android:layout_height="30dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;android:textColor="@android:color/black"&ndash;&gt;-->
+<!--        &lt;!&ndash;android:textSize="20sp" />&ndash;&gt;-->
+
+<!--    </RelativeLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:id="@+id/runsheetcnno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:maxLines="1"
+                    android:text="MY8979779878"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtDateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text=""
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/imgSyncStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/close_circle"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            tools:ignore="VectorDrawableCompat" />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

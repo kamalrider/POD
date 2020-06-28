@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".scan.Activity.ScanCNActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="300dp">
+
+        <include
+            android:id="@+id/app_bar"
+            layout="@layout/app_bar" />
+
+        <com.journeyapps.barcodescanner.DecoratedBarcodeView
+            android:id="@+id/barcodeScanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/app_bar"
+            android:layout_marginTop="-3dp" />
+
+        <LinearLayout
+            android:id="@+id/llTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/app_bar"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Total Scan : "
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/txtTotalScan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textColor="@android:color/white" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text=""
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/txtBranch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llTagDest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/app_bar"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dest Load       :"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dest Unload   :"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dest On hand :"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtDestUpload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/txtDestUnload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/txtDestOnHand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="100dp"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:layout_centerHorizontal="true"-->
+        <!--            android:orientation="vertical">-->
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="300dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:orientation="horizontal">-->
+
+        <!--                <EditText-->
+        <!--                    android:id="@+id/edi_cnno"-->
+        <!--                    android:layout_width="0dp"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_weight="9"-->
+        <!--                    android:background="@color/colorPrimary"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:hint="CONSIGNMENT NO."-->
+        <!--                    android:inputType="textCapCharacters"-->
+        <!--                    android:maxLines="1"-->
+        <!--                    android:minEms="10"-->
+        <!--                    android:padding="16dp"-->
+        <!--                    android:textColor="@android:color/white"-->
+        <!--                    android:textColorHint="@android:color/darker_gray"-->
+        <!--                    android:textSize="20sp"-->
+        <!--                    android:textStyle="bold" />-->
+
+        <!--                <ImageButton-->
+        <!--                    android:id="@+id/plus_scan"-->
+        <!--                    android:layout_width="0dp"-->
+        <!--                    android:layout_height="match_parent"-->
+        <!--                    android:layout_weight="2"-->
+        <!--                    android:background="@color/colorPrimary"-->
+        <!--                    app:srcCompat="@drawable/plus_circle_outline"-->
+        <!--                    tools:ignore="VectorDrawableCompat" />-->
+
+        <!--            </LinearLayout>-->
+
+        <!--            &lt;!&ndash;            <LinearLayout&ndash;&gt;-->
+        <!--            &lt;!&ndash;                android:layout_width="300dp"&ndash;&gt;-->
+        <!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--            &lt;!&ndash;                android:background="@color/colorSemiTransparentDark"&ndash;&gt;-->
+        <!--            &lt;!&ndash;                android:orientation="horizontal">&ndash;&gt;-->
+
+        <!--            &lt;!&ndash;                <CheckBox&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    android:id="@+id/checkBox"&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    android:layout_width="0dp"&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    android:layout_height="match_parent"&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    android:layout_marginLeft="10dp"&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    android:layout_weight="1"&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    android:buttonTint="@android:color/white" />&ndash;&gt;-->
+
+        <!--            &lt;!&ndash;                <TextView&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    android:layout_width="0dp"&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    android:layout_height="match_parent"&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    android:layout_weight="4"&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    android:paddingTop="2dp"&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    android:text="Continue as Bulk"&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    android:textColor="@android:color/white"&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    android:textSize="18sp" />&ndash;&gt;-->
+
+
+        <!--            &lt;!&ndash;            </LinearLayout>&ndash;&gt;-->
+        <!--        </LinearLayout>-->
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerviewrunsheets"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/scan_cn_row" />
+
+    </ScrollView>
+
+</LinearLayout>
