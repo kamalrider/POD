@@ -27,6 +27,10 @@ public class ScanCNViewModel extends AndroidViewModel {
         return scanCNRepository.getAllCN();
     }
 
+    public LiveData<ScanCN> getImage(){
+        return scanCNRepository.getImage();
+    }
+
     public void inserScanCN(ScanCN scanCN, Callback<Long> callback) {
         scanCNRepository.insertScanCN(scanCN, callback);
     }

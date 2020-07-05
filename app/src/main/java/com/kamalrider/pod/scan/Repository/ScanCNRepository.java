@@ -42,6 +42,10 @@ public class ScanCNRepository {
         return scanCNDao.getAll();
     }
 
+    public LiveData<ScanCN> getImage(){
+        return scanCNDao.getImage();
+    }
+
     public void insertScanCN(final ScanCN scanCN, final Callback<Long> callback){
         executor.execute(new Runnable() {
             @Override

@@ -15,6 +15,7 @@ public class ScanCN {
     private String status;
     private double lat;
     private double lon;
+    private String imgUrl;
 
 //    private File photoFilePath;
 //    private File pdfFilePath;
@@ -68,7 +69,15 @@ public class ScanCN {
         this.lon = lon;
     }
 
-//    public File getPhotoFilePath() {
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    //    public File getPhotoFilePath() {
 //        return photoFilePath;
 //    }
 

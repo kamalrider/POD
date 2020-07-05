@@ -17,6 +17,9 @@ public interface ScanCNDao {
     @Query("SELECT * FROM ScanCN")
     LiveData<List<ScanCN>> getAll();
 
+    @Query("SELECT * FROM ScanCN WHERE conno = 'test'")
+    LiveData<ScanCN> getImage();
+
     @Insert
     long insert(ScanCN scanCN);
 
