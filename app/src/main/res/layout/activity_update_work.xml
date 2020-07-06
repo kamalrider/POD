@@ -7,6 +7,10 @@
     android:orientation="vertical"
     tools:context=".scan.Activity.UpdateWorkActivity">
 
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,6 +42,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="take pic"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupDisability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioDisability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="64dp"
+            android:text="Delivered" />
+
+        <RadioButton
+            android:id="@+id/radioDisabilityNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:paddingRight="64dp"
+            android:text="Undelivered" />
+
+    </RadioGroup>
+
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -3,14 +3,17 @@ package com.kamalrider.pod.scan.Activity;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +21,7 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -44,24 +48,38 @@ public class UpdateWorkActivity extends AppCompatActivity {
     public static final int REQUEST_IMAGE = 100;
     private ScanCNViewModel scanCNViewModel;
     String imgUrl = "";
+    private static final String PREFS_NAME = "preferenceName";
+
+    public static final String CN = "CN";
+    public String cn;
+    private RadioGroup radioGroupDisability;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_work);
 
+        cn = getIntent().getStringExtra(CN);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(cn);
+
+
         imgUpdateWork = findViewById(R.id.img);
 
         ButterKnife.bind(this);
 
         scanCNViewModel = ViewModelProviders.of(UpdateWorkActivity.this).get(ScanCNViewModel.class);
+        radioGroupDisability = findViewById(R.id.radioGroupDisability);
 
-        scanCNViewModel.getImage().observe(this, new Observer<ScanCN>() {
-            @Override
-            public void onChanged(ScanCN scanCN) {
-                imgUrl = scanCN.getImgUrl();
-            }
-        });
+//        scanCNViewModel.getImage().observe(this, new Observer<ScanCN>() {
+//            @Override
+//            public void onChanged(ScanCN scanCN) {
+//                imgUrl = scanCN.getImgUrl();
+//            }
+//        });
 
         loadProfileDefault();
 
@@ -69,6 +87,8 @@ public class UpdateWorkActivity extends AppCompatActivity {
         // don't call this line if you want to choose multiple images in the same activity
         // call this once the bitmap(s) usage is over
         ImagePickerActivity.clearCache(this);
+
+
 
     }
 
@@ -185,14 +205,27 @@ public class UpdateWorkActivity extends AppCompatActivity {
         // Checking that locally is there is any image
         // and setting that or setting the default image
 
-        if(!imgUrl.isEmpty()){
-            loadProfile(imgUrl);
+        if(getPreference(this,"imgurl") !=null){
+            loadProfile(getPreference(this,"imgurl"));
         }else {
             Glide.with(this).load(R.drawable.image)
                     .into(imgUpdateWork);
             imgUpdateWork.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary));
         }
 
+    }
+
+    public static boolean setPreference(Context context, String key, String value) {
+        SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString(key, value);
+        return editor.commit();
+    }
+
+    // Get Value locally by key
+    public static String getPreference(Context context, String key) {
+        SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return settings.getString(key, null);
     }
 
     @Override
@@ -207,32 +240,11 @@ public class UpdateWorkActivity extends AppCompatActivity {
                     // loading profile image from local cache
 
                     // Saving the image uri locally by Dibyendu
-                    ScanCN scanCN = new ScanCN();
-                    scanCN.setConno("test");
-                    scanCN.setImgUrl(uri.toString());
-                    scanCNViewModel.inserScanCN(scanCN, new Callback<Long>() {
-                        @Override
-                        public void onSuccess(Long result) {
-                            runOnUiThread(new Runnable() {
-                                public void run() {
-                                    Toast.makeText(UpdateWorkActivity.this, "Captured", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        }
 
-                        @Override
-                        public void onFailure(String errorMessage) {
-
-                            runOnUiThread(new Runnable() {
-                                public void run() {
-                                    Toast.makeText(UpdateWorkActivity.this, "Duplicate CN", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-
-                        }
-                    });
-//                    setPreference(this,"imgurl", uri.toString());
+                    setPreference(this,"imgurl", uri.toString());
                     //---End of that
+
+
 
                     loadProfile(uri.toString());
                 } catch (IOException e) {

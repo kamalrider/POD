@@ -126,9 +126,13 @@ public class ScanCNActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
 
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(cnList.get(position).getConno()));
-                startActivity(i);
+//                Intent i = new Intent(Intent.ACTION_VIEW);
+//                i.setData(Uri.parse(cnList.get(position).getConno()));
+//                startActivity(i);
+
+                Intent intent = new Intent(ScanCNActivity.this, UpdateWorkActivity.class);
+                intent.putExtra(UpdateWorkActivity.CN, cnList.get(position).getConno());
+                startActivity(intent);
             }
         });
 

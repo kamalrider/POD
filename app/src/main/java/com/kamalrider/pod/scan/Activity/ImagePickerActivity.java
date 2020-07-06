@@ -1,10 +1,13 @@
 package com.kamalrider.pod.scan.Activity;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -14,18 +17,13 @@ import android.provider.OpenableColumns;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
+import com.kamalrider.pod.R;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.kamalrider.pod.R;
 import com.yalantis.ucrop.UCrop;
-
 
 import java.io.File;
 import java.util.List;
@@ -87,24 +85,21 @@ public class ImagePickerActivity extends AppCompatActivity {
 
     }
 
-    public static void showImagePickerOptions(Context context, final PickerOptionListener listener) {
+    public static void showImagePickerOptions(Context context, PickerOptionListener listener) {
         // setup the alert builder
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(context.getString(R.string.lbl_set_profile_photo));
 
         // add a list
         String[] animals = {context.getString(R.string.lbl_take_camera_picture), context.getString(R.string.lbl_choose_from_gallery)};
-        builder.setItems(animals, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case 0:
-                        listener.onTakeCameraSelected();
-                        break;
-                    case 1:
-                        listener.onChooseGallerySelected();
-                        break;
-                }
+        builder.setItems(animals, (dialog, which) -> {
+            switch (which) {
+                case 0:
+                    listener.onTakeCameraSelected();
+                    break;
+                case 1:
+                    listener.onChooseGallerySelected();
+                    break;
             }
         });
 
